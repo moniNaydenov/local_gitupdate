@@ -44,6 +44,13 @@ ob_implicit_flush(true);
 if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
     $repos = array();
     exec('find \'' . $CFG->dirroot . '\' -name .git -print', $repos);
+
+    $repos2 = array();
+    exec('find \'' . $CFG->dataroot . '/lang\' -name .git -print', $repos2);
+
+    $repos = array_merge($repos, $repos2);
+
+
     $repo_det = array();
     if(!empty($repos)) {
         foreach($repos as $repo_path) {      
@@ -286,6 +293,10 @@ HTMLPAGE;
             echo 'Please, select repositories to update!';
         } else {
             foreach($_POST['selectedrepos'] as $repoid) {
+                //TODO: at least some security
+                /*if (!file_exists($_POST['url'.$repoid] . '/.git')) { //and is writable
+                    echo '<p>';
+                }*/
                 chdir($_POST['url'.$repoid]);
                // shell_exec('git reset --hard HEAD');
                 echo '<span style="font-weight: bold;">' . $_POST['name'.$repoid] . ':</span><br /><br />';
@@ -334,4 +345,3 @@ HTMLPAGE;
 function convertToHTML($input) {
 	return str_replace(array(" ","\n", "\r", "\t"), array( '&nbsp;', '<br />', '<br />', '&nbsp;&nbsp;&nbsp;&nbsp;'), $input);//. '<br />';
 }
-
