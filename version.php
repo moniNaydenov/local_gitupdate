@@ -25,7 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version   = 2017030800;
-$plugin->release   = "v3.2.0";       // User-friendly version number
+$plugin->version   = 2017053000;
+$plugin->release   = "v3.3.0";       // User-friendly version number
 $plugin->requires  = 2014041100;      // Requires this Moodle version!
 $plugin->component = 'local_gitupdate';    // To check on upgrade, that module sits in correct place.
