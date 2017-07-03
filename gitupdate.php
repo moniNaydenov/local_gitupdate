@@ -167,7 +167,7 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
                         }
                     }
                     document.getElementById(divid).innerHTML = "loading...";
-                    xmlhttp.open("GET","gsdgitupdate.php?path=" + path + "&branch=" + branch + "&type=" + type ,true);                    
+                    xmlhttp.open("GET","aaagitupdate.php?path=" + path + "&branch=" + branch + "&type=" + type ,true);                    
                     xmlhttp.send();                    
                 }
 
