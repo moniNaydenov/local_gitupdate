@@ -26,3 +26,4 @@
 defined('MOODLE_INTERNAL') || die;
 
 $string['pluginname'] = 'Gitupdate plugin';
+$string['opengitupdate'] = 'Open gitupdate';
