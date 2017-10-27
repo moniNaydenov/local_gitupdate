@@ -5,12 +5,12 @@ if ($is_in_git) {
 } else {
     require_once(__DIR__ . '/../../config.php');
 }
-require_login();
+/*require_login();
 if(!is_siteadmin()) {
     header('Location: ' . $CFG->wwwroot . '/index.php');
 	exit;
 }
-
+*/
 header( 'Content-type: text/html; charset=utf-8' );
 
 // AJAX call handled here
