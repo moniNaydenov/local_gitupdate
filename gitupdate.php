@@ -323,8 +323,8 @@ HTMLPAGE;
                 
                 echo convertToHTML(shell_exec('git branch -D some_random_branch_name_tu'));
 
-                echo 'Current commit:<br /> ';
-                echo convertToHTML(shell_exec('git log -n 1 --format=medium')) . '<br />';
+                echo 'Current:<br /> ';
+                echo '<em>' . convertToHTML(shell_exec('git log -n 1 --format=medium')) . '</em><br />';
 
                 echo 'done.<br />';
 
