@@ -5,12 +5,12 @@ if ($is_in_git) {
 } else {
     require_once(__DIR__ . '/../../config.php');
 }
-/*require_login();
+require_login();
 if(!is_siteadmin()) {
     header('Location: ' . $CFG->wwwroot . '/index.php');
 	exit;
 }
-*/
+
 header( 'Content-type: text/html; charset=utf-8' );
 
 // AJAX call handled here
@@ -323,7 +323,8 @@ HTMLPAGE;
                 
                 echo convertToHTML(shell_exec('git branch -D some_random_branch_name_tu'));
 
-                echo 'Current hash: ' . shell_exec('git log -n 1 --format=format:%h') . '<br />';;
+                echo 'Current commit:<br /> ';
+                echo convertToHTML(shell_exec('git log -n 1 --format=medium')) . '<br />';
 
                 echo 'done.<br />';
 
