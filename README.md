@@ -6,7 +6,7 @@ This file is part of the local_gitupate plugin for Moodle - <http://moodle.org/>
 *Author:*   Simeon Naydenov
 
 
-*Copyright:* 2017 [Academic Moodle Cooperation](http://www.academic-moodle-cooperation.org)
+*Copyright:* 2018 [Academic Moodle Cooperation](http://www.academic-moodle-cooperation.org)
 
 
 *License:*   [GNU GPL v3 or later](http://www.gnu.org/copyleft/gpl.html)
@@ -22,7 +22,7 @@ web interface
 Requirements
 ------------
 
-The plugin is available for Moodle 3.3. It also requires "git" to be installed on the server. If 
+The plugin is available for Moodle 3.4. It also requires "git" to be installed on the server. If 
 the repositories require ssh connection and credentials, they need to be set up to the user which
 runs the web server (apache,httpd,www-data,www..). All source-code files have to have write permissions
 present to that user. 
