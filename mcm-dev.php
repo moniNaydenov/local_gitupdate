@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
             echo "finished</h1>";
             break;
         case 'status':
-            echo "<h1>Fetching cluster status...</h1>";
+            echo "<h1>Fetching cluster status...";
             $return = shell_exec('/opt/moodle/mcm-dev.sh -l');
             echo "finished</h1>";
             break;
