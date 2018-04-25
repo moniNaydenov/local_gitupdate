@@ -22,21 +22,29 @@ header( 'Content-type: text/html; charset=utf-8' );
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'clusteroff':
+            echo "<h1>Turning cluster off...";
             $return = shell_exec('/opt/moodle/mcm-dev.sh -o0 other');
+            echo "finished</h1>";
             break;
         case 'status':
+            echo "<h1>Fetching cluster status...</h1>";
             $return = shell_exec('/opt/moodle/mcm-dev.sh -l');
+            echo "finished</h1>";
             break;
         case 'sync':
+            echo "<h1>Syncing files (this could take a while)...</h1>";
             $return = shell_exec('/opt/moodle/mcm-dev.sh -s other');
+            echo "finished</h1>";
             break;
         case 'clusteron':
+            echo "<h1>Turning cluster on...";
             $return = shell_exec('/opt/moodle/mcm-dev.sh -o1 all');
+            echo "finished</h1>";
             break;
         default:
             $return = HELPTEXT;
     }
-    echo convertToHTML($return);
+    echo "<div>".convertToHTML($return)."</div>";
     die;
 } else {
     $return = shell_exec('/opt/moodle/mcm-dev.sh -l');
