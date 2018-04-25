@@ -22,16 +22,16 @@ header( 'Content-type: text/html; charset=utf-8' );
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'clusteroff':
-            //$return = shell_exec('/opt/moodle/mcm-dev.sh -o0 other');
+            $return = shell_exec('/opt/moodle/mcm-dev.sh -o0 other');
             break;
         case 'status':
             $return = shell_exec('/opt/moodle/mcm-dev.sh -l');
             break;
         case 'sync':
-            //$return = shell_exec('/opt/moodle/mcm-dev.sh -s other');
+            $return = shell_exec('/opt/moodle/mcm-dev.sh -s other');
             break;
         case 'clusteron':
-            //$return = shell_exec('/opt/moodle/mcm-dev.sh -o1 all');
+            $return = shell_exec('/opt/moodle/mcm-dev.sh -o1 all');
             break;
         default:
             $return = HELPTEXT;
