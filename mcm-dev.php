@@ -36,12 +36,12 @@ if (isset($_GET['action'])) {
         default:
             $return = HELPTEXT;
     }
-    echo converttoHTML($return);
+    echo convertToHTML($return);
     die;
 } else {
     $return = shell_exec('/opt/moodle/mcm-dev.sh -l');
-    echo "<section class='status'><h1>Current status:</h1><div>".convertoHTML($return)."</div></section>";
-    echo "<section class='status'><h1>HELP</h1><div>".converttoHTML(HELPTEXT)."</div></section>";
+    echo "<section class='status'><h1>Current status:</h1><div>".convertToHTML($return)."</div></section>";
+    echo "<section class='status'><h1>HELP</h1><div>".convertToHTML(HELPTEXT)."</div></section>";
 }
 
 
