@@ -10,19 +10,19 @@ if(!is_siteadmin()) {
 
 define('HELPTEXT', "Possible actions (call as <cite>mcm-dev.php?action=CHOSENACTION</cite>):<br />
 <ul>
-    <li><b><a href='mdm-dev.php?action=clusteroff'>clusteroff</a></b> deactivates all other nodes</li>
-    <li><b><a href='mdm-dev.php?action=status'>status</a></b> outputs status information about all nodes</li>
-    <li><b><a href='mdm-dev.php?action=sync'>sync</a></b> copies data from current node to all others</li>
-    <li><b><a href='mdm-dev.php?action=clusteron'>clusteron</a></b> activates all nodes again</li>
+    <li><b><a href='mcm-dev.php?action=clusteroff'>clusteroff</a></b> deactivates all other nodes</li>
+    <li><b><a href='mcm-dev.php?action=status'>status</a></b> outputs status information about all nodes</li>
+    <li><b><a href='mcm-dev.php?action=sync'>sync</a></b> copies data from current node to all others</li>
+    <li><b><a href='mcm-dev.php?action=clusteron'>clusteron</a></b> activates all nodes again</li>
 </ul>
 Usual workflow:
 <ol>
-    <li><a href='mdm-dev.php?action=clusteroff'>Turn cluster off mcm-dev.php?action=clusteroff</a></li>
-    <li><a href='mdm-dev.php?action=status'>Check status of cluster mcm-dev.php?action=status</li>
+    <li><a href='mcm-dev.php?action=clusteroff'>Turn cluster off mcm-dev.php?action=clusteroff</a></li>
+    <li><a href='mcm-dev.php?action=status'>Check status of cluster mcm-dev.php?action=status</li>
     <li><a href='gitupdate.php' target='_blank'>Do your normal gitupdate.php-work</a></li>
-    <li><a href='mdm-dev.php?action=sync'>Sync changes to other nodes: mcm-dev.php?action=sync</a></li>
-    <li><a href='mdm-dev.php?action=clusteron'>Turn up cluster again mcm-dev.php?action=clusteron</a></li>
-    <li><a href='mdm-dev.php?action=status'>Check status of cluster again mcm-dev.php?action=status</a></li>
+    <li><a href='mcm-dev.php?action=sync'>Sync changes to other nodes: mcm-dev.php?action=sync</a></li>
+    <li><a href='mcm-dev.php?action=clusteron'>Turn up cluster again mcm-dev.php?action=clusteron</a></li>
+    <li><a href='mcm-dev.php?action=status'>Check status of cluster again mcm-dev.php?action=status</a></li>
 </ol>");
 
 header( 'Content-type: text/html; charset=utf-8' );
@@ -30,11 +30,11 @@ header( 'Content-type: text/html; charset=utf-8' );
 echo "<header>
     <table>
         <tr>
-            <td><a href='mdm-dev.php?action=clusteroff'>clusteroff</a></td>
-            <td><a href='mdm-dev.php?action=status'>status</a></td>
-            <td><a href='mdm-dev.php?action=sync'>sync</a></td>
-            <td><a href='mdm-dev.php?action=clusteron'>clusteron</a></td>
-            <td><a href='mdm-dev.php'>help</a></td>
+            <td><a href='mcm-dev.php?action=clusteroff'>clusteroff</a></td>
+            <td><a href='mcm-dev.php?action=status'>status</a></td>
+            <td><a href='mcm-dev.php?action=sync'>sync</a></td>
+            <td><a href='mcm-dev.php?action=clusteron'>clusteron</a></td>
+            <td><a href='mcm-dev.php'>help</a></td>
         </tr>
     </table>";
 
