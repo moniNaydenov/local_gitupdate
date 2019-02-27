@@ -81,7 +81,9 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
                 if(strpos($branch, '*') !== false) {
                     $repo_det[$origin_name]['currentbranch'] = substr($branch, 2);
                 } else {
-                    $repo_det[$origin_name]['currentbranch'] = '';
+                    unset($repo_det[$origin_name]);
+                    continue 2;
+                    //$repo_det[$origin_name]['currentbranch'] = '';
                 }
                 
             }       
