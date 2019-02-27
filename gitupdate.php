@@ -53,12 +53,14 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
 
     $repo_det = array();
     if(!empty($repos)) {
-        foreach($repos as $repo_path) {      
+        foreach($repos as $repo_path) {
             $sub_path = substr($repo_path, 0, -5); //remove the  /.git from the path
+
+            echo $sub_path . ' - ';
 
             chdir($sub_path);
 
-	    $fetch_res = shell_exec('git fetch -a') != ''?1:0; //retrieve all changes
+	        $fetch_res = shell_exec('git fetch -a') != ''?1:0; //retrieve all changes
             
             
                 
@@ -70,7 +72,9 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
             $origin_raw = substr($origin_raw, strrpos($origin_raw, '/'));
             $origin_raw = substr($origin_raw, strrpos($origin_raw, ':')+1);
             $origin_name = trim(str_replace(array('(fetch)', '(push)', '.git'), '', $origin_raw));
-            
+
+            echo $origin_name . PHP_EOL . PHP_EOL;
+
             $repo_det[$origin_name]['url'] = $sub_path;
             //get the names of the remote branches
             $branches_temp = explode("\n", shell_exec('git branch -a'));
@@ -80,10 +84,6 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
                     $branches[] = substr($branch, 17); //just clear remote branch name
                 if(strpos($branch, '*') !== false) {
                     $repo_det[$origin_name]['currentbranch'] = substr($branch, 2);
-                } else {
-                    unset($repo_det[$origin_name]);
-                    continue 2;
-                    //$repo_det[$origin_name]['currentbranch'] = '';
                 }
                 
             }       
