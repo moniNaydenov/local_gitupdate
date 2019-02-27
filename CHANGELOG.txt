@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.6.0 (2019-02-27)
+------------------
+* Moodle 3.6 compatible version
+* [BUG] #5888 - fix warning for undefined index "currentbranch"
+
 3.4.0 (2018-01-07)
 ------------------
 

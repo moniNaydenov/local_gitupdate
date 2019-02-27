@@ -80,6 +80,8 @@ if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
                     $branches[] = substr($branch, 17); //just clear remote branch name
                 if(strpos($branch, '*') !== false) {
                     $repo_det[$origin_name]['currentbranch'] = substr($branch, 2);
+                } else {
+                    $repo_det[$origin_name]['currentbranch'] = '';
                 }
                 
             }       

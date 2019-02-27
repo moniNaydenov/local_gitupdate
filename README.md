@@ -22,7 +22,7 @@ web interface
 Requirements
 ------------
 
-The plugin is available for Moodle 3.4. It also requires "git" to be installed on the server. If 
+The plugin is available for Moodle 3.6. It also requires "git" to be installed on the server. If 
 the repositories require ssh connection and credentials, they need to be set up to the user which
 runs the web server (apache,httpd,www-data,www..). All source-code files have to have write permissions
 present to that user. 
