@@ -13,11 +13,38 @@ if(!is_siteadmin()) {
 
 header( 'Content-type: text/html; charset=utf-8' );
 
+
+$repos = array();
+exec('find \'' . $CFG->dirroot . '\' -name .git -print', $repos);
+
+$repos2 = array();
+exec('find \'' . $CFG->dataroot . '/lang\' -name .git -print', $repos2);
+
+$repos = array_merge($repos, $repos2);
+
+
 // AJAX call handled here
 if (isset($_GET['path']) && isset($_GET['branch']) && isset($_GET['type'])) {
     $path = base64_decode($_GET['path']);
+    if (!in_array($path . '/.git', $repos)) {
+        die('Invalid path supplied!');
+    }
+
     $branch = $_GET['branch'];
     chdir($path);
+
+    $branches_temp = explode("\n", shell_exec('git branch -a'));
+    $branchfound = false;
+    array_walk($branches_temp, function($elem) use ($branch, &$branchfound) {
+        if (strpos($elem, $branch) !== false) {
+            $branchfound = true;
+        }
+    });
+
+    if (!$branchfound) {
+        die('Invalid branch specified!');
+    }
+
     if ($_GET['type'] == md5('current')) {
         echo $branch . '<br />';
         echo convertToHTML(shell_exec('git log -n 1 ' . $branch));
@@ -42,14 +69,6 @@ if (isset($_SESSION['gitupdatefinished'])) {
 // Default page with list of repositories and branches
 ob_implicit_flush(true);
 if (empty($_POST) && !isset($_SESSION['gitupdate'])) {
-    $repos = array();
-    exec('find \'' . $CFG->dirroot . '\' -name .git -print', $repos);
-
-    $repos2 = array();
-    exec('find \'' . $CFG->dataroot . '/lang\' -name .git -print', $repos2);
-
-    $repos = array_merge($repos, $repos2);
-
 
     $repo_det = array();
     if(!empty($repos)) {
@@ -298,13 +317,31 @@ HTMLPAGE;
             echo 'Please, select repositories to update!';
         } else {
             foreach($_POST['selectedrepos'] as $repoid) {
-                //TODO: at least some security
-                /*if (!file_exists($_POST['url'.$repoid] . '/.git')) { //and is writable
-                    echo '<p>';
-                }*/
-                chdir($_POST['url'.$repoid]);
-               // shell_exec('git reset --hard HEAD');
+
                 echo '<span style="font-weight: bold;">' . $_POST['name'.$repoid] . ':</span><br /><br />';
+
+                $path = $_POST['url'.$repoid];
+                if (!in_array($path . '/.git', $repos)) {
+                    echo 'Invalid path supplied!';
+                    continue;
+                }
+
+                $branch = $_POST['branch'.$repoid];
+                chdir($path);
+
+                $branches_temp = explode("\n", shell_exec('git branch -a'));
+                $branchfound = false;
+                array_walk($branches_temp, function($elem) use ($branch, &$branchfound) {
+                    if (strpos($elem, $branch) !== false) {
+                        $branchfound = true;
+                    }
+                });
+
+                if (!$branchfound) {
+                    echo 'Invalid branch specified!';
+                    continue;
+                }
+
                 //resets all files
                 echo 'Performing git reset...<br />';
                 echo convertToHTML(shell_exec('git reset --hard ' . shell_exec('git log -n 1 --format=format:%H')));
