@@ -373,6 +373,7 @@ HTMLPAGE;
             }
         }
         echo '<input type="button" value="back" onclick="javascript: window.location = \'' . $CFG->wwwroot . '/local/gitupdate/gitupdate.php\'" style="width: 100px;"/>';
+        echo '<input type="button" value="to admin page" onclick="javascript: window.location = \'' . $CFG->wwwroot . '/admin\'" style="width: 100px;"/>';
         echo '</body>
         </html>';
         $_SESSION['gitupdatefinished'] = true;
