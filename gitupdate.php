@@ -387,5 +387,5 @@ HTMLPAGE;
 
 
 function convertToHTML($input) {
-	return str_replace(array(" ","\n", "\r", "\t"), array( '&nbsp;', '<br />', '<br />', '&nbsp;&nbsp;&nbsp;&nbsp;'), $input);//. '<br />';
+	return str_replace(array(" ","\n", "\r", "\t"), array( '&nbsp;', '<br />', '<br />', '&nbsp;&nbsp;&nbsp;&nbsp;'), htmlspecialchars($input, ENT_QUOTES));//. '<br />';
 }
